@@ -5,11 +5,11 @@ import { Text } from "@react-three/drei";
 import { Vector3 } from "three";
 
 interface WordProps {
-  position: string | Vector3;
-  word: string | Vector3 | React.ReactNode;
+  position: Vector3;
+  word: string;
 }
 
-const Word: React.FC<WordProps> = ({ word, ...props }) => {
+const Word: React.FC<WordProps> = ({ word, position, ...props }) => {
   const color = new THREE.Color();
   const fontProps = {
     // font: '/Inter-Bold.woff',
@@ -46,10 +46,12 @@ const Word: React.FC<WordProps> = ({ word, ...props }) => {
       onPointerOver={over}
       onPointerOut={out}
       onClick={onClick}
-      children={word}
+      position={position}
       {...fontProps}
       {...props}
-    />
+    >
+      {word}
+    </Text>
   );
 };
 

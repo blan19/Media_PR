@@ -2,6 +2,7 @@ import React from "react";
 import * as THREE from "three";
 import { useMemo } from "react";
 import Word from "./Word";
+import { Vector3 } from "three";
 
 const contents = ["Intro", "React", "Threejs", "Work", "Question"];
 
@@ -10,9 +11,11 @@ interface CloudProps {
   radius: number;
 }
 
+type TempType = [Vector3, string];
+
 const Cloud = ({ count, radius }: CloudProps): JSX.Element[] => {
   const words = useMemo(() => {
-    const temp = [];
+    const temp: TempType[] = [];
     const spherical = new THREE.Spherical();
     const phiSpan = Math.PI / (count + 1);
     const thetaSpan = (Math.PI * 2) / count;
@@ -27,8 +30,8 @@ const Cloud = ({ count, radius }: CloudProps): JSX.Element[] => {
         ]);
     return temp;
   }, [count, radius]);
-  return words.map(([pos, word], index) => (
-    <Word key={index} position={pos} word={word} />
+  return words.map((word, index) => (
+    <Word key={index} position={word[0]} word={word[1]} />
   ));
 };
 
