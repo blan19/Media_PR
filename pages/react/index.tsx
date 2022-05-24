@@ -2,7 +2,7 @@ import { NextPage } from "next";
 import useIntersectReveal from "../../hooks/useIntersectReveal";
 import useIntersectShow from "../../hooks/useIntersectShow";
 import * as UI from "../../styles/ui";
-import * as S from "./react.style";
+import * as S from "../../components/React/react.style";
 
 const React: NextPage = () => {
   return (
