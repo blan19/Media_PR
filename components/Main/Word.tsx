@@ -6,7 +6,7 @@ import { Vector3 } from "three";
 
 interface WordProps {
   position: string | Vector3;
-  children: string | Vector3;
+  children: string;
 }
 
 const Word: React.FC<WordProps> = ({ children, ...props }) => {
