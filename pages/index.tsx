@@ -13,8 +13,8 @@ const Main: NextPage = () => {
       <Stars
         radius={100}
         depth={50}
-        count={1500}
-        factor={4}
+        count={2500}
+        factor={8}
         saturation={0}
         fade
         speed={1}

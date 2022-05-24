@@ -1,11 +1,17 @@
 import type { NextPage } from "next";
-import React from "react";
+import { Canvas } from "@react-three/fiber";
+import { Suspense } from "react";
+import Contents from "../components/Intro/Contents";
 
 const Intro: NextPage = () => {
   return (
-    <div>
-      <h1>intro page</h1>
-    </div>
+    <Canvas>
+      <ambientLight />
+      <directionalLight color="red" intensity={10} />
+      <Suspense fallback={null}>
+        <Contents />
+      </Suspense>
+    </Canvas>
   );
 };
 

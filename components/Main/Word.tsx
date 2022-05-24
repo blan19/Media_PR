@@ -12,7 +12,7 @@ interface WordProps {
 const Word: React.FC<WordProps> = ({ word, position, ...props }) => {
   const color = new THREE.Color();
   const fontProps = {
-    // font: '/Inter-Bold.woff',
+    font: "/fonts/NanumGothicCoding-Regular.ttf",
     fontSize: 4.5,
     cusor: "pointer",
     letterSpacing: -0.05,
@@ -25,16 +25,11 @@ const Word: React.FC<WordProps> = ({ word, position, ...props }) => {
     e.stopPropagation(), setHovered(true)
   );
   const out = () => setHovered(false);
-  const onClick = useCallback(() => {
-    if (typeof word === "string") {
-      location.href = word.toLowerCase();
-    }
-  }, [word]);
-  // Tie component to the render-loop
+  const onClick = useCallback((word: string) => {
+    location.href = word.toLowerCase();
+  }, []);
   useFrame(({ camera }) => {
-    // Make text face the camera
     ref.current?.quaternion.copy(camera.quaternion);
-    // Animate font color
     ref.current?.material.color.lerp(
       color.set(hovered ? "#61DAFB" : "white"),
       0.1
@@ -45,7 +40,7 @@ const Word: React.FC<WordProps> = ({ word, position, ...props }) => {
       ref={ref}
       onPointerOver={over}
       onPointerOut={out}
-      onClick={onClick}
+      onClick={() => onClick(word)}
       position={position}
       {...fontProps}
       {...props}
