@@ -1,6 +1,6 @@
+import React from "react";
 import { Point, Points } from "@react-three/drei";
 import { useThree } from "@react-three/fiber";
-import React from "react";
 
 const particleColors = ["#61DAFB"];
 
