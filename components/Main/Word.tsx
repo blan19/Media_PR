@@ -2,9 +2,11 @@ import React, { useCallback, useRef, useState } from "react";
 import * as THREE from "three";
 import { ThreeEvent, useFrame } from "@react-three/fiber";
 import { Text } from "@react-three/drei";
+import { Vector3 } from "three";
 
 interface WordProps {
-  children: string;
+  position: string | Vector3;
+  children: string | Vector3;
 }
 
 const Word: React.FC<WordProps> = ({ children, ...props }) => {

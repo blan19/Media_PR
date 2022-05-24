@@ -10,7 +10,7 @@ interface CloudProps {
   radius: number;
 }
 
-const Cloud = ({ count, radius }: CloudProps): JSX.Element => {
+const Cloud = ({ count, radius }: CloudProps): JSX.Element[] => {
   const words = useMemo(() => {
     const temp = [];
     const spherical = new THREE.Spherical();
