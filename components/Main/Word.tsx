@@ -6,10 +6,10 @@ import { Vector3 } from "three";
 
 interface WordProps {
   position: string | Vector3;
-  children: string;
+  word: string | Vector3 | React.ReactNode;
 }
 
-const Word: React.FC<WordProps> = ({ children, ...props }) => {
+const Word: React.FC<WordProps> = ({ word, ...props }) => {
   const color = new THREE.Color();
   const fontProps = {
     // font: '/Inter-Bold.woff',
@@ -26,8 +26,10 @@ const Word: React.FC<WordProps> = ({ children, ...props }) => {
   );
   const out = () => setHovered(false);
   const onClick = useCallback(() => {
-    location.href = children.toLowerCase();
-  }, []);
+    if (typeof word === "string") {
+      location.href = word.toLowerCase();
+    }
+  }, [word]);
   // Tie component to the render-loop
   useFrame(({ camera }) => {
     // Make text face the camera
@@ -44,7 +46,7 @@ const Word: React.FC<WordProps> = ({ children, ...props }) => {
       onPointerOver={over}
       onPointerOut={out}
       onClick={onClick}
-      children={children}
+      children={word}
       {...fontProps}
       {...props}
     />

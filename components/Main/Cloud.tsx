@@ -28,7 +28,7 @@ const Cloud = ({ count, radius }: CloudProps): JSX.Element[] => {
     return temp;
   }, [count, radius]);
   return words.map(([pos, word], index) => (
-    <Word key={index} position={pos} children={word} />
+    <Word key={index} position={pos} word={word} />
   ));
 };
 
