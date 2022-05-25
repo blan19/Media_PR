@@ -14,7 +14,7 @@ const Main: NextPage = () => {
         radius={100}
         depth={50}
         count={2500}
-        factor={8}
+        factor={6}
         saturation={0}
         fade
         speed={1}

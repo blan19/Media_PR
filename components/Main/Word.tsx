@@ -12,8 +12,9 @@ interface WordProps {
 const Word: React.FC<WordProps> = ({ word, position, ...props }) => {
   const color = new THREE.Color();
   const fontProps = {
-    font: "/fonts/NanumGothicCoding-Regular.ttf",
-    fontSize: 4.5,
+    // font: "/fonts/NanumGothicCoding-Regular.ttf",
+    font: "/fonts/Dongle-Light.ttf",
+    fontSize: 6.5,
     cusor: "pointer",
     letterSpacing: -0.05,
     lineHeight: 1,

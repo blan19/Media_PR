@@ -19,7 +19,8 @@ const GlobalStyles = createGlobalStyle`
     height: 100%;
     background-color: #212329;
     color: #fff;
-    font-family: 'Nanum Gothic Coding', --apple-system, monospace;
+    font-family: 'Dongle', sans-serif;
+    /* font-family: 'Nanum Gothic Coding', --apple-system, monospace; */
     font-size: 62.5%;
     @media screen and (max-width: 1280px) {
       font-size: 56.3%;
