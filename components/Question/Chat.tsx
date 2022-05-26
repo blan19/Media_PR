@@ -8,14 +8,12 @@ export type ChatType = { user: string; text: string };
 
 export interface StateType {
   name: string;
-  connected: boolean;
   chat: ChatType[];
 }
 
 const Chat = () => {
   const [state, setState] = useState<StateType>({
     name: new Chance().first(),
-    connected: false,
     chat: [],
   });
 
@@ -53,7 +51,7 @@ const Chat = () => {
   return (
     <>
       {memorizationChat}
-      <ChatForm user={state.name} connected={state.connected} />
+      <ChatForm user={state.name} />
     </>
   );
 };
