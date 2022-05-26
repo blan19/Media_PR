@@ -25,9 +25,12 @@ const Chat = () => {
   );
 
   useEffect((): any => {
-    const socket = Socket.connect("http://localhost:3000", {
-      path: "/api/chats/socket",
-    });
+    const socket = Socket.connect(
+      process.env.NEXT_BASE_URL || "http://localhost:3000",
+      {
+        path: "/api/chats/socket",
+      }
+    );
 
     socket.on("connect", () => {
       console.log("Socket Connected", socket.id);
