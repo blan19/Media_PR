@@ -17,10 +17,11 @@ const Form = styled.form`
 
 const Input = styled.textarea`
   outline: none;
-  width: 50rem;
+  width: 30rem;
   height: 5rem;
   padding: 1rem;
   border-radius: 0.5rem;
+  font-size: 1.5rem;
 `;
 
 const Button = styled.button`
@@ -43,11 +44,15 @@ const ChatBox = styled.div<{ center?: boolean }>`
       align-items: center;
       justify-content: center;
     `}
-  width: 50rem;
+  width: 30rem;
 `;
 
 const Chat = styled.h1`
-  font-size: 6rem;
+  font-size: 3.5rem;
 `;
 
-export { Container, Form, Input, Button, ChatBox, Chat };
+const Icon = styled.span`
+  font-size: 2.5rem;
+`;
+
+export { Container, Form, Input, Button, ChatBox, Chat, Icon };

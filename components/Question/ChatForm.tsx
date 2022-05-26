@@ -39,7 +39,7 @@ const ChatForm: React.FC<ChatFormProps> = ({ user, connected, channel }) => {
   return (
     <Html fullscreen>
       <S.Container>
-        <S.Form onSubmit={handleSubmit(onSubmit)}>
+        <S.Form>
           <S.Input
             placeholder={connected ? "질문을 입력해보세요" : "연결중.."}
             disabled={connected ? false : true}
@@ -47,7 +47,9 @@ const ChatForm: React.FC<ChatFormProps> = ({ user, connected, channel }) => {
             onKeyDown={onKeypress}
             {...register("input", { required: true })}
           />
-          <S.Button type="submit">Click</S.Button>
+          <S.Button type="button" onClick={handleSubmit(onSubmit)}>
+            Click
+          </S.Button>
         </S.Form>
       </S.Container>
     </Html>

@@ -20,9 +20,6 @@ const ChatText: React.FC<ChatTextProps> = ({ chat }) => {
           <Html
             key={uid(5)}
             position={[
-              // 0,
-              // 0,
-              // 0,
               Math.floor(Math.random() * (xMax - xMin) + xMin),
               Math.floor(Math.random() * (yMax - yMin) + yMin),
               (idx + 1) * -0.1,
@@ -36,7 +33,9 @@ const ChatText: React.FC<ChatTextProps> = ({ chat }) => {
       ) : (
         <Html center>
           <S.ChatBox center>
-            <S.Chat>질문이 있다면, 채팅해주세요!</S.Chat>
+            <S.Chat>
+              질문이 있다면, 채팅해주세요!<S.Icon> 😋</S.Icon>
+            </S.Chat>
           </S.ChatBox>
         </Html>
       )}
