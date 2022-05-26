@@ -1,10 +1,18 @@
+import { Canvas } from "@react-three/fiber";
 import { NextPage } from "next";
+import { Suspense } from "react";
+import Chat from "../../components/Question/Chat";
 
 const Question: NextPage = () => {
   return (
-    <div>
-      <h1>채팅방으로 질문페이지를 채울 예정입니다</h1>
-    </div>
+    <Canvas>
+      <ambientLight />
+      <directionalLight color="red" intensity={10} />
+      <fog attach="fog" args={["#202025", 0, 80]} />
+      <Suspense fallback={null}>
+        <Chat />
+      </Suspense>
+    </Canvas>
   );
 };
 

@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
-import Contents from "../components/Intro/Contents";
+import Contents from "../../components/Intro/Contents";
 
 const Intro: NextPage = () => {
   return (
