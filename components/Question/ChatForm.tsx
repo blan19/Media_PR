@@ -7,13 +7,14 @@ import * as S from "./Question.style";
 
 interface ChatFormProps {
   user: string;
+  connected: boolean;
 }
 
 interface FormState {
   input: string;
 }
 
-const ChatForm: React.FC<ChatFormProps> = ({ user }) => {
+const ChatForm: React.FC<ChatFormProps> = ({ user, connected }) => {
   const { register, handleSubmit, reset } = useForm<FormState>();
   const onSubmit = useCallback(
     async (data: FormState) => {
@@ -36,7 +37,8 @@ const ChatForm: React.FC<ChatFormProps> = ({ user }) => {
       <S.Container>
         <S.Form onSubmit={handleSubmit(onSubmit)}>
           <S.Input
-            placeholder="질문을 입력해보세요"
+            placeholder={connected ? "질문을 입력해보세요" : "연결중.."}
+            disabled={connected ? false : true}
             spellCheck={false}
             {...register("input", { required: true })}
           />
