@@ -1,21 +1,27 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
 import ChatForm from "./ChatForm";
 import ChatText from "./ChatText";
 import Chance from "chance";
-import * as Socket from "socket.io-client";
+import useChannel from "../../hooks/useChannel";
+import { Types } from "ably";
 
-export type ChatType = { user: string; text: string };
+export type ChatType = Types.Message;
 
 export interface StateType {
   name: string;
-  connected: boolean;
   chat: ChatType[];
 }
 
 const Chat = () => {
+  const [channel, _, connected] = useChannel("media-pr", (msg) => {
+    setState((prev) => ({
+      ...prev,
+      chat: prev.chat.concat(msg),
+    }));
+  });
+
   const [state, setState] = useState<StateType>({
     name: new Chance().first(),
-    connected: false,
     chat: [],
   });
 
@@ -24,36 +30,10 @@ const Chat = () => {
     [state.chat]
   );
 
-  useEffect((): any => {
-    const socket = Socket.connect(
-      process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000",
-      {
-        path: "/api/chats/socket",
-      }
-    );
-
-    socket.on("connect", () => {
-      console.log("Socket Connected", socket.id);
-      setState((prev) => ({
-        ...prev,
-        connected: true,
-      }));
-    });
-
-    socket.on("chat", (chat: ChatType) => {
-      setState((prev) => ({
-        ...prev,
-        chat: prev.chat.concat(chat),
-      }));
-    });
-
-    if (socket) return () => socket.disconnect();
-  }, []);
-
   return (
     <>
       {memorizationChat}
-      <ChatForm user={state.name} connected={state.connected} />
+      <ChatForm channel={channel} user={state.name} connected={connected} />
     </>
   );
 };

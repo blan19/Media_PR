@@ -1,11 +1,11 @@
 import React, { useCallback } from "react";
 import { Html } from "@react-three/drei";
 import { useForm } from "react-hook-form";
-import axios from "axios";
-import { ChatType } from "./Chat";
+import { Types } from "ably";
 import * as S from "./Question.style";
 
 interface ChatFormProps {
+  channel: Types.RealtimeChannelPromise;
   user: string;
   connected: boolean;
 }
@@ -14,23 +14,27 @@ interface FormState {
   input: string;
 }
 
-const ChatForm: React.FC<ChatFormProps> = ({ user, connected }) => {
-  const { register, handleSubmit, reset } = useForm<FormState>();
+const ChatForm: React.FC<ChatFormProps> = ({ user, connected, channel }) => {
+  const { register, handleSubmit, reset, watch } = useForm<FormState>();
   const onSubmit = useCallback(
     async (data: FormState) => {
-      const contents: ChatType = {
-        user,
-        text: data.input,
-      };
-
-      await axios
-        .post("/api/chats", contents)
-        .then(() => console.log("success"))
-        .catch(() => console.log("error"));
-
+      await channel.publish({ name: user, data: data.input });
       reset();
     },
-    [reset, user]
+    [channel, reset, user]
+  );
+  const text = watch("input");
+
+  const onKeypress = useCallback(
+    async (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+      if (e.key !== "Enter" || text.length === 0) {
+        return;
+      }
+      await channel.publish({ name: user, data: text });
+      reset();
+      e.preventDefault();
+    },
+    [channel, reset, text, user]
   );
   return (
     <Html fullscreen>
@@ -40,6 +44,7 @@ const ChatForm: React.FC<ChatFormProps> = ({ user, connected }) => {
             placeholder={connected ? "질문을 입력해보세요" : "연결중.."}
             disabled={connected ? false : true}
             spellCheck={false}
+            onKeyDown={onKeypress}
             {...register("input", { required: true })}
           />
           <S.Button type="submit">Click</S.Button>

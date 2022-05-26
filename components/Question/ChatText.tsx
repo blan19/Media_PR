@@ -16,7 +16,7 @@ const ChatText: React.FC<ChatTextProps> = ({ chat }) => {
   return (
     <group>
       {chat.length > 0 ? (
-        chat.map(({ text }, idx) => (
+        chat.map(({ data }, idx) => (
           <Html
             key={uid(5)}
             position={[
@@ -29,7 +29,7 @@ const ChatText: React.FC<ChatTextProps> = ({ chat }) => {
             ]}
           >
             <S.ChatBox>
-              <S.Chat>{text}</S.Chat>
+              <S.Chat>{data}</S.Chat>
             </S.ChatBox>
           </Html>
         ))
