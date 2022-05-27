@@ -10,11 +10,11 @@ const Div = styled.div<{ pos?: boolean; top: string }>`
     props.pos ? "translateX(-65%)" : "translateX(-50%)"};
 `;
 
-const H1 = styled.h1<{ click?: boolean }>`
+const H1 = styled.h1<{ click?: boolean; black?: boolean }>`
   text-align: center;
   font-size: 5.5rem;
   font-weight: bold;
-  color: #fff;
+  color: ${(props) => (props.black ? "#000" : "#fff")};
   cursor: ${(props) => props.click && "pointer"};
   span {
     font-size: 5rem;
