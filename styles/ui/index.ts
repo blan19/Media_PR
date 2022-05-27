@@ -13,11 +13,16 @@ const P = styled.p`
   padding: 2rem 0;
 `;
 
-const Span = styled.span<{ lighter?: boolean; primary?: boolean }>`
+const Span = styled.span<{
+  lighter?: boolean;
+  primary?: boolean;
+  gap?: boolean;
+}>`
   padding: 1rem 0;
-  font-size: 2.25rem;
+  font-size: 2.75rem;
   font-weight: ${(props) => props.lighter && "lighter"};
   color: ${(props) => props.primary && "#61DAFB"};
+  padding: ${(props) => props.gap && "2rem 0"};
 `;
 
 const HighLight = styled.p<{ center?: boolean }>`
@@ -45,7 +50,9 @@ const Inline = styled.span`
   font-weight: bold;
 `;
 
-const Img = styled(Image)``;
+const Img = styled(Image)`
+  width: 100%;
+`;
 
 const Icon = styled.span<{ left?: boolean; right?: boolean }>`
   padding-right: ${(props) => props.right && "1rem"};
@@ -75,14 +82,10 @@ const Grid = styled.div<{ mobile?: boolean }>`
   display: grid;
   gap: 1rem;
   padding: 5rem 0;
-  ${(props) =>
-    props.mobile
-      ? css`
-          grid-template-columns: 1fr;
-        `
-      : css`
-          grid-template-columns: 1fr 1fr 1fr;
-        `}
+  grid-template-columns: 1fr 1fr 1fr;
+  @media screen and (max-width: 500px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const Col = styled.div<{ center?: boolean }>`
@@ -93,6 +96,10 @@ const Col = styled.div<{ center?: boolean }>`
       flex-direction: column;
       align-items: center;
       justify-content: flex-start;
+      @media screen and (max-width: 500px) {
+        align-items: flex-start;
+        margin-top: 2rem;
+      }
     `}
 `;
 

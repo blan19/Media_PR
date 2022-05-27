@@ -1,6 +1,11 @@
 import { useRef, useEffect, useCallback } from "react";
 
-const useIntersectReveal = (duration = 1, delay = 0, opacity = 1) => {
+const useIntersectReveal = (
+  duration = 1,
+  delay = 0,
+  opacity = 1,
+  scale = false
+) => {
   const element = useRef<HTMLDivElement | null>(null!);
 
   const onScroll = useCallback<IntersectionObserverCallback>(
@@ -12,9 +17,10 @@ const useIntersectReveal = (duration = 1, delay = 0, opacity = 1) => {
         current.style.transitionTimingFunction = "cubic-bezier(0, 0, 0.2, 1)";
         current.style.transitionDelay = `${delay}s`;
         current.style.opacity = `${opacity}`;
+        current.style.transform = scale ? `scale(1,1)` : "";
       }
     },
-    [delay, duration, opacity]
+    [delay, duration, opacity, scale]
   );
 
   useEffect(() => {
@@ -30,7 +36,7 @@ const useIntersectReveal = (duration = 1, delay = 0, opacity = 1) => {
 
   return {
     ref: element,
-    style: { opacity: 0 },
+    style: { opacity: 0, transform: scale ? "scale(0,0)" : "" },
   };
 };
 
