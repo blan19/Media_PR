@@ -3,7 +3,7 @@ import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 import Texts from "../../components/Threejs/Texts";
 import { Cloud, Scroll, ScrollControls, Sky } from "@react-three/drei";
-import Html from "../../components/Threejs/HTML";
+import Html from "../../components/Threejs/Html";
 
 const Threejs: NextPage = () => {
   return (
