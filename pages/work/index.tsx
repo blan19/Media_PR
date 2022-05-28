@@ -2,6 +2,7 @@ import { ScrollControls, Sky } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { NextPage } from "next";
 import { Suspense } from "react";
+import Loader from "../../components/Common/Loader";
 import Story from "../../components/Work/Story";
 
 const Work: NextPage = () => {
@@ -24,8 +25,8 @@ const Work: NextPage = () => {
           position={[10, 6, 6]}
           shadow-mapSize={[1024, 1024]}
         />
-        <Sky />
-        <Suspense fallback={null}>
+        <Sky azimuth={0.25} turbidity={0} rayleigh={0.25} />
+        <Suspense fallback={<Loader />}>
           <ScrollControls pages={5}>
             <Story />
           </ScrollControls>

@@ -1,7 +1,10 @@
-import { Cloud, OrbitControls, useGLTF, useScroll } from "@react-three/drei";
+import { Html, useGLTF, useScroll } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { useRef, useState } from "react";
 import { Group } from "three";
+import Clouds from "./Clouds";
+import * as S from "./Story.style";
+import Texts from "./Texts";
 
 interface IState {
   x: number;
@@ -26,16 +29,11 @@ const Story = () => {
   });
   return (
     <group position={[0, 0, -340]}>
+      {/* <OrbitControls /> */}
       <group ref={ref} position={[0, 0, -340]} rotation={[0, Math.PI * 1.5, 0]}>
         <primitive object={scene} />
-        <group>
-          {/* right */}
-          <Cloud position={[20, 0, -340]} speed={0.2} opacity={1} width={10} />
-          <Cloud position={[20, 0, 360]} speed={0.2} opacity={1} width={10} />
-          {/* left */}
-          <Cloud position={[-80, 0, 340]} speed={0.2} opacity={1} width={10} />
-          <Cloud position={[-80, 0, 375]} speed={0.2} opacity={1} width={10} />
-        </group>
+        <Texts />
+        <Clouds />
       </group>
     </group>
   );

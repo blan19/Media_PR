@@ -4,6 +4,7 @@ import { Suspense } from "react";
 import Texts from "../../components/Threejs/Texts";
 import { Cloud, Scroll, ScrollControls, Sky } from "@react-three/drei";
 import Html from "../../components/Threejs/Html";
+import Loader from "../../components/Common/Loader";
 
 const Threejs: NextPage = () => {
   return (
@@ -24,7 +25,7 @@ const Threejs: NextPage = () => {
           inclination={0.6}
           distance={1000}
         />
-        <Suspense fallback={null}>
+        <Suspense fallback={<Loader />}>
           <ScrollControls pages={4}>
             <Scroll>
               <Texts />
