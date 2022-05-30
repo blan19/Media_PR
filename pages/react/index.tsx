@@ -2,17 +2,18 @@ import { NextPage } from "next";
 import * as UI from "../../styles/ui";
 import useIntersectReveal from "../../hooks/useIntersectReveal";
 import useIntersectShow from "../../hooks/useIntersectShow";
+import {} from "framer-motion";
 
 const React: NextPage = () => {
   return (
     <UI.Container>
       <UI.Wrapper>
         <UI.Div top>
-          <UI.H1 center primary power {...useIntersectReveal(2, 0, 1, true)}>
+          <UI.H1 center primary power>
             간단하게 React를 소개해보겠습니다!!
           </UI.H1>
         </UI.Div>
-        <UI.Div top center {...useIntersectReveal(2, 0, 1, true)}>
+        <UI.Div top center>
           <UI.Img
             src="/images/React.gif"
             alt="react"
@@ -50,10 +51,8 @@ const React: NextPage = () => {
             <UI.Col center {...useIntersectReveal(4, 2)}>
               <UI.Span primary>생산성</UI.Span>
               <UI.Span>생산성 중요하죠?</UI.Span>
-              <UI.Span>
-                리액트와 같은 라이브러리나, 프레임워크는 기존 자바스크립트로
-                작성한 코드보다
-              </UI.Span>
+              <UI.Span>리액트와 같은 라이브러리나, 프레임워크들은는</UI.Span>
+              <UI.Span>기존 자바스크립트로 작성한 코드보다</UI.Span>
               <UI.Span>코드의 양을 훨씬 줄여줍니다.</UI.Span>
             </UI.Col>
           </UI.Grid>
@@ -61,7 +60,7 @@ const React: NextPage = () => {
         <UI.Div top>
           <UI.P {...useIntersectShow("left")}>3. 리액트 말고도 많아요!</UI.P>
           <UI.Grid>
-            <UI.Col center>
+            <UI.Col center {...useIntersectReveal(4)}>
               <UI.Span primary gap>
                 Vue
               </UI.Span>
@@ -72,7 +71,7 @@ const React: NextPage = () => {
                 height={150}
               />
             </UI.Col>
-            <UI.Col center>
+            <UI.Col center {...useIntersectReveal(4, 1)}>
               <UI.Span primary gap>
                 Svelte
               </UI.Span>
@@ -83,7 +82,7 @@ const React: NextPage = () => {
                 height={150}
               />
             </UI.Col>
-            <UI.Col center>
+            <UI.Col center {...useIntersectReveal(4, 2)}>
               <UI.Span primary gap>
                 Angular
               </UI.Span>
