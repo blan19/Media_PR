@@ -8,6 +8,15 @@ const Html = () => {
         <Intro.H1 black>렌더링하기 위한</Intro.H1>
         <Intro.H1 black>로우 레벨 Javascript API입니다.</Intro.H1>
       </Intro.Div>
+      <Intro.Div top="240vh">
+        <Intro.H1
+          black
+          style={{ cursor: "pointer" }}
+          onClick={() => (location.href = "/work")}
+        >
+          WebGL을 활용한 졸업작품으로...!
+        </Intro.H1>
+      </Intro.Div>
     </>
   );
 };
