@@ -6,6 +6,7 @@ import { Group } from "three";
 const Texts = () => {
   const ref: Ref<Group> | undefined = useRef(null!);
   const { scene } = useGLTF("/gltf/WebGL.glb");
+
   useFrame(({ clock }) => {
     if (ref.current) {
       ref.current.rotation.x =

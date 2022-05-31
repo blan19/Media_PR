@@ -1,3 +1,4 @@
+import { OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { NextPage } from "next";
 import { Suspense } from "react";
@@ -8,6 +9,7 @@ const Question: NextPage = () => {
   return (
     <Canvas>
       <ambientLight />
+      <OrbitControls />
       <directionalLight color="red" intensity={10} />
       <fog attach="fog" args={["#202025", 0, 80]} />
       <Suspense fallback={<Loader dark />}>

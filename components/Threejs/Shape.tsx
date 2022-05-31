@@ -13,7 +13,7 @@ const Shape = () => {
     box.current.rotation.y += 0.01;
   });
   return (
-    <group position={[0, -19, 0]}>
+    <group position={[0, -23, 0]}>
       <mesh ref={box}>
         <boxBufferGeometry args={[1, 1, 1]} />
         <meshStandardMaterial color="red" />

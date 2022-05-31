@@ -16,20 +16,20 @@ const ChatText: React.FC<ChatTextProps> = ({ chat }) => {
   return (
     <group>
       {chat.length > 0 ? (
-        chat.map(({ data }, idx) => (
-          <Html
-            key={uid(5)}
-            position={[
-              Math.floor(Math.random() * (xMax - xMin) + xMin),
-              Math.floor(Math.random() * (yMax - yMin) + yMin),
-              (idx + 1) * -0.1,
-            ]}
-          >
-            <S.ChatBox>
-              <S.Chat>{data}</S.Chat>
-            </S.ChatBox>
-          </Html>
-        ))
+        chat
+          .slice(-3)
+          .reverse()
+          .map(({ data }, idx) => (
+            <Html
+              key={uid(5)}
+              position={[0, 0 + idx * 2, 0 - idx * 2]}
+              transform
+            >
+              <S.ChatBox>
+                <S.Chat>{data}</S.Chat>
+              </S.ChatBox>
+            </Html>
+          ))
       ) : (
         <Html center>
           <S.ChatBox center>

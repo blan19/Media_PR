@@ -23,18 +23,17 @@ const ChatForm: React.FC<ChatFormProps> = ({ user, connected, channel }) => {
     },
     [channel, reset, user]
   );
+
   const text = watch("input");
 
   const onKeypress = useCallback(
     async (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
-      if (e.key !== "Enter" || text.length === 0) {
-        return;
+      if (e.key == "Enter" && text.length !== 0) {
+        onSubmit({ input: text });
+        e.preventDefault();
       }
-      await channel.publish({ name: user, data: text });
-      reset();
-      e.preventDefault();
     },
-    [channel, reset, text, user]
+    [onSubmit, text]
   );
   return (
     <Html fullscreen>
@@ -44,7 +43,7 @@ const ChatForm: React.FC<ChatFormProps> = ({ user, connected, channel }) => {
             placeholder={connected ? "질문을 입력해보세요" : "연결중.."}
             disabled={connected ? false : true}
             spellCheck={false}
-            onKeyDown={onKeypress}
+            // onKeyDown={onKeypress}
             {...register("input", { required: true })}
           />
           <S.Button type="button" onClick={handleSubmit(onSubmit)}>

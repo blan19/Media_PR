@@ -44,11 +44,16 @@ const ChatBox = styled.div<{ center?: boolean }>`
       align-items: center;
       justify-content: center;
     `}
-  width: 30rem;
+  width: 40rem;
+  background-color: #495057;
+  border-radius: 0.5rem;
 `;
 
 const Chat = styled.h1`
+  padding: 0.5rem 1rem;
   font-size: 3.5rem;
+  text-align: center;
+  width: 100%;
 `;
 
 const Icon = styled.span`

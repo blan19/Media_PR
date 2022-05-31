@@ -1,3 +1,4 @@
+import Image from "next/image";
 import styled from "styled-components";
 import { rotationHand } from "../../styles/css/animation";
 
@@ -23,4 +24,19 @@ const H1 = styled.h1<{ click?: boolean; black?: boolean }>`
   }
 `;
 
-export { H1, Div };
+const IntroImage = styled(Image)`
+  width: 100%;
+`;
+
+const A = styled.a`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #000;
+`;
+
+export { H1, Div, IntroImage, A };
