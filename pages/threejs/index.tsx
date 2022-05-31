@@ -5,6 +5,7 @@ import Texts from "../../components/Threejs/Texts";
 import { Cloud, Scroll, ScrollControls, Sky } from "@react-three/drei";
 import Html from "../../components/Threejs/Html";
 import Loader from "../../components/Common/Loader";
+import Shape from "../../components/Threejs/Shape";
 
 const Threejs: NextPage = () => {
   return (
@@ -29,6 +30,7 @@ const Threejs: NextPage = () => {
           <ScrollControls pages={4}>
             <Scroll>
               <Texts />
+              <Shape />
               <Cloud position={[-4, -2, -25]} speed={0.2} opacity={1} />
               <Cloud position={[4, 2, -15]} speed={0.2} opacity={0.5} />
               <Cloud position={[-4, 2, -10]} speed={0.2} opacity={1} />
