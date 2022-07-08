@@ -11,3 +11,8 @@
 
 next.js에선 realtime chat으로 socket.io를 비추천하여, 괜찮은 api와 프리티어를 가지고 있는 ably를 선택하고 realtime chat을 구성했습니다.
 Q&A 섹션에서 활발한 질의응답을 위해 익명 처리와 함께 3D chat을 구성했습니다
+
+## 개발 중 이슈
+
+Canvas 내에 있는 메쉬를 통해 router가 불가능하여 임시방편으로 SPA 대신 href를 사용하여 직접 페이지를 이동하도록 설정하였습니다.
+생각 난 이슈 해결 방안은 직접 커스텀 이벤트를 만들어 전역으로 선언해주고 history api를 쓰는 방안을 생각했으며 적용 
